@@ -1,3 +1,7 @@
+"""
+Utils to manage Kitti dataset
+"""
+
 import pandas
 import os
 import glob

@@ -1,3 +1,7 @@
+"""
+Script to train the network
+"""
+
 import os
 import random
 import time

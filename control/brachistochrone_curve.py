@@ -1,3 +1,7 @@
+"""
+Solve Brachistochrone Curve by Tensorflow
+"""
+
 import tensorflow as tf
 import collections
 import matplotlib.pyplot as plt
@@ -112,7 +116,7 @@ class BrachistochroneCurve:
             time = (-vel + tf.sqrt(vel * vel + 2 * acc * distance)) / acc
             next_vel = vel + acc * time
         else:
-            # linear dynamic model. It is Stable by can't handle velocity close to 0.
+            # linear dynamic model. It is Stable but can't handle velocity close to 0.
             time_est = distance / vel
             next_vel_est = vel + acc * time_est
             # I guess a while loop can make it converge...

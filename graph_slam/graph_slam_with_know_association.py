@@ -1,3 +1,6 @@
+"""
+Algorithm to run graph SLAM and a demo
+"""
 import matplotlib.pyplot as plt
 import numpy as np
 import tensorflow as tf

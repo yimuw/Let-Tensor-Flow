@@ -1,13 +1,15 @@
-import tensorflow as tf
-
 """
-Optimal Control
+Solve optimal control by Tensorflow
+
+Optimal Control problem:
 
 Define: dx(t) = dynamic_t( x(t), u(t) ), where dx(t) means dx/dt evaluate at t
         x(0) = constant
 
 Goal:   Minimize  J = Sum_over_t( h_t( x(t), u(t) ), where h_t(*) is a function output a scale
 """
+
+import tensorflow as tf
 
 
 class InvestmentOptimalControl:
