@@ -16,11 +16,11 @@ The initial goal was to teach my wife using Tensorflow to do object detection. S
 
 I am using python packages from Udacity self-driving car program. 
 
-They are using anaconda environment to manage python packages. I recommend you to use it too because doing that is less likely to break your existing python packages.
+They are using anaconda environment to manage python packages. I recommend you to use it because doing that is less likely to break your existing python packages.
 
 How to set up python packages: https://github.com/udacity/CarND-Term1-Starter-Kit/blob/master/README.md
 
-If you want GPU support, you need to install Cuda libraries (which is that hardest part of deep learning) and run 
+If you want GPU support, you need to install Cuda libraries (which is the hardest part of deep learning) and run 
 ```
 conda env create -f environment-gpu.yml
 ```  
@@ -33,7 +33,7 @@ source active carnd-term1
 #### deep learning
 In this project, I try to detect object's 2d bird-eye location from images. I am using the Kitti detection dataset. I commit a sample dataset and a trained net to the repository (bad practice though). If you want to train the net, please download the full Kitti detection dataset and replace the sample dataset.
 
-The visualize the trained net result, go to kitti_detection directory
+To visualize the trained net result, go to kitti_detection directory
 
 ```
 python show_results.py
