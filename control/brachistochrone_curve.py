@@ -51,7 +51,6 @@ class BrachistochroneCurve:
         for i in range(1, self.num_vars):
             self.Accelerations.append(tf.identity(self.compute_acceleration_line_direction(self.Points[i - 1], self.Points[i]),
                                                   name='acc{}'.format(i)))
-        assert len(self.Accelerations) == self.num_vars - 1
 
         # Compute velocity, traveling time and distance for each line segment
         vel0 = tf.Variable(0., trainable=False, name='vel0')
