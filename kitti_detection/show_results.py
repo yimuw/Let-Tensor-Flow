@@ -22,11 +22,18 @@ def plot_mats(X, heatmap_value, regression_value):
 
     f, ((ax1, ax2, ax3), (ax4, ax5, ax6)) = plt.subplots(2, 3)
     ax1.imshow(kitti_data.ImageNormalizer().un_normalize(X[0, :, :, :]).astype('uint8'))
+    ax1.set_title('input image')
     ax2.imshow(predict_labels == DATA_CONST.CAR_CHANNEL_IDX)
+    ax2.set_title('car pixel')
     ax3.imshow(predict_labels == DATA_CONST.PED_CHANNEL_IDX)
-    ax4.imshow(heatmap_value[0, :, :, 1])
+    ax3.set_title('pedestrain pixel')
+    ax4.imshow(heatmap_value[0, :, :, DATA_CONST.CAR_CHANNEL_IDX])
+    ax4.set_title('car heatmap')
+    # TODO: regression channel is suspicious
     ax5.imshow(regression_value[0, :, :, DATA_CONST.CAR_DISTANCE_IDX])
+    ax5.set_title('car distance')
     ax6.imshow(regression_value[0, :, :, DATA_CONST.PED_DISTANCE_IDX])
+    ax6.set_title('pedestrian distance')
 
     f.canvas.draw()
 
@@ -71,6 +78,9 @@ def bird_eye_plot(heatmap_value, regression_value):
     axes.set_xlim([0, MAX_PIXEL_IDX * PIXEL_TO_METER])
     axes.set_ylim([0, MAX_RANGE])
     plt.gca().set_aspect('equal', adjustable='box')
+    plt.gca().set_title('Bird eye objects location\nBlue: cars   Red: pedestrian')
+    plt.xlabel('lateral distance')
+    plt.ylabel('longitudinal distance')
 
 
 def check_net(net_path):
@@ -79,10 +89,8 @@ def check_net(net_path):
     :param net_path: path to tensorflow meta data
     """
     TEST_DATA_DIRECTORY = os.path.join(kitti_data.DATA_DIRECTORY, 'testing')
-    print(TEST_DATA_DIRECTORY)
     image_database = kitti_data.KittiImageTestingDatabase(TEST_DATA_DIRECTORY)
     images = image_database.images
-    print('LEN!', len(images))
 
     with tf.Session() as sess:
         new_saver = tf.train.import_meta_graph(net_path)

@@ -305,14 +305,23 @@ def train():
                 # TODO: Put into a function. A python function should less than 50 lines
                 if VERBOSE and offset % 100 == 0:
                     ax1.cla()
+                    ax1.set_title('input X')
                     ax2.cla()
+                    ax2.set_title('Y_heatmap_1')
                     ax3.cla()
+                    ax3.set_title('y_pred_1')
                     ax4.cla()
+                    ax4.set_title('y_pred_2')
                     ax5.cla()
+                    ax5.set_title('bbox_predict_0')
                     ax6.cla()
+                    ax6.set_title('Y_regression_0')
                     ax7.cla()
+                    ax7.set_title('Y_regression_1')
                     ax8.cla()
+                    ax8.set_title('Y_ignore')
                     ax9.cla()
+                    ax9.set_title('Y_regression_mask')
 
                     ax1.imshow(kitti_data.ImageNormalizer().un_normalize(X[0, :, :, :]).astype('uint8'))
                     ax2.imshow(Y_heatmap[0, :, :, 2])
